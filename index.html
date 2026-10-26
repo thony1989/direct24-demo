@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DIRECT24 — Demo V4</title>
+<style>
+:root{--bg:#06101d;--panel:#0d1a2b;--panel2:#101f33;--line:#223a55;--text:#f2f7ff;--muted:#9eb1c7;--accent:#dcecff;--ok:#75e0a4;--warn:#ffc66d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#123052 0,#06101d 38%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}.wrap{max-width:1180px;margin:auto;padding:24px 20px 60px}.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:55px}.logo{font-size:25px;font-weight:950;letter-spacing:-1.5px}.nav span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:7px 11px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}.panel{background:rgba(13,26,43,.9);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 24px 80px #0005}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.2px;color:#9fc7ef}.hero h1{font-size:clamp(45px,7vw,78px);line-height:.92;letter-spacing:-5px;margin:15px 0 24px}.muted{color:var(--muted);line-height:1.55}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.btn{border:0;border-radius:11px;padding:13px 17px;font-weight:850;cursor:pointer;background:var(--accent);color:#07111d}.btn.alt{background:#142940;color:#dcecff;border:1px solid var(--line)}.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.mini{background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:16px}.mini b{display:block;font-size:26px}.section{margin-top:24px}.hidden{display:none}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field label{display:block;color:var(--muted);font-size:12px;margin:0 0 6px}.field input,.field select{width:100%;background:#081523;border:1px solid var(--line);color:#fff;border-radius:10px;padding:12px}.checkrow{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0;color:#c8d8ea}.quote{margin-top:18px;background:#071522;border:1px solid #294766;border-radius:16px;padding:18px}.quote .big{font-size:42px;font-weight:950;letter-spacing:-2px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}.kpi b{font-size:28px}.table{margin-top:14px}.row{display:grid;grid-template-columns:1.2fr 1.5fr .7fr .8fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}.pill{display:inline-block;padding:6px 9px;border-radius:99px;font-size:11px;background:#153324;color:var(--ok)}.footer{margin-top:40px;color:#71879e;font-size:12px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.formgrid,.kpis{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.nav{margin-bottom:30px}.hero h1{letter-spacing:-3px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="nav"><div class="logo">DIRECT24</div><span>V4 DEMO • CONTROL TOWER</span></header>
+
+<section id="home" class="hero">
+<div class="panel">
+<div class="eyebrow">TRASPORTO DEDICATO H24</div>
+<h1>Quando non puoi aspettare, noi partiamo.</h1>
+<p class="muted">Una piattaforma B2B per richiedere un trasporto dedicato, ottenere una stima immediata e seguire la missione fino alla consegna.</p>
+<div class="buttons">
+<button class="btn" onclick="show('booking')">Richiedi un trasporto</button>
+<button class="btn alt" onclick="show('tracking')">Segui una missione</button>
+<button class="btn alt" onclick="show('tower')">Control Tower</button>
+</div>
+</div>
+<div class="panel">
+<div class="eyebrow">LA PROMESSA DIRECT24</div>
+<h2>Un solo carico.<br>Una sola destinazione.</h2>
+<p class="muted">Nessun hub. Nessun trasbordo. Mezzo dedicato fino a 1.300 kg. Disponibilità anche notte, weekend e festivi.</p>
+<div class="mini-grid"><div class="mini"><b>1</b><span class="muted">carico</span></div><div class="mini"><b>1</b><span class="muted">destinazione</span></div><div class="mini"><b>0</b><span class="muted">trasbordi</span></div></div>
+</div>
+</section>
+
+<section id="booking" class="panel section hidden">
+<div class="buttons" style="margin-top:0"><button class="btn alt" onclick="show('home')">← Home</button></div>
+<h2>Richiedi un trasporto dedicato</h2>
+<p class="muted">Compila i dati e la demo calcolerà un prezzo indicativo.</p>
+<div class="formgrid">
+<div class="field"><label>Azienda</label><input id="company" value="Azienda Demo Srl"></div>
+<div class="field"><label>Email</label><input id="email" value="logistica@azienda.it"></div>
+<div class="field"><label>Partenza</label><input id="from" value="Torino"></div>
+<div class="field"><label>Destinazione</label><input id="to" value="Roma"></div>
+<div class="field"><label>Km totali missione</label><input id="km" type="number" value="680"></div>
+<div class="field"><label>Pedaggi €</label><input id="tolls" type="number" value="75"></div>
+<div class="field"><label>Peso kg</label><input id="weight" type="number" value="450"></div>
+<div class="field"><label>Attesa prevista (ore)</label><input id="wait" type="number" value="0"></div>
+</div>
+<div class="checkrow">
+<label><input id="urgent" type="checkbox"> Urgente</label>
+<label><input id="night" type="checkbox"> Notturno</label>
+<label><input id="holiday" type="checkbox"> Festivo</label>
+</div>
+<div class="buttons"><button class="btn" onclick="quote()">Calcola preventivo</button><button class="btn alt" onclick="book()">Conferma richiesta demo</button></div>
+<div id="quote" class="quote hidden"></div>
+</section>
+
+<section id="tracking" class="panel section hidden">
+<div class="buttons" style="margin-top:0"><button class="btn alt" onclick="show('home')">← Home</button></div>
+<h2>Tracking missione</h2>
+<p class="muted">Nella demo puoi usare il codice <b>D24-ROMA01</b> oppure quello generato dalla prenotazione.</p>
+<div class="formgrid"><div class="field"><label>Codice missione</label><input id="code" value="D24-ROMA01"></div><div class="buttons" style="margin-top:19px"><button class="btn" onclick="track()">Cerca missione</button></div></div>
+<div id="trackResult" class="quote">
+<span class="pill">IN VIAGGIO</span><h2>D24-ROMA01</h2>
+<p>Torino → Roma</p><p class="muted">Mezzo: Opel Movano • Targa DX24A02<br>Ultimo aggiornamento: mezzo in viaggio verso destinazione.</p>
+</div>
+</section>
+
+<section id="tower" class="section hidden">
+<div class="buttons" style="margin-top:0"><button class="btn alt" onclick="show('home')">← Home</button></div>
+<div class="kpis"><div class="kpi"><b>3</b><div class="muted">mezzi totali</div></div><div class="kpi"><b>2</b><div class="muted">disponibili</div></div><div class="kpi"><b>1</b><div class="muted">in viaggio</div></div><div class="kpi"><b>€ 3.420</b><div class="muted">missioni demo</div></div></div>
+<div class="panel section"><h2>Control Tower</h2><div class="table">
+<div class="row"><b>Missione</b><b>Tratta</b><b>Prezzo</b><b>Stato</b></div>
+<div class="row"><span>D24-ROMA01</span><span>Torino → Roma</span><span>€ 1.020</span><span class="pill">IN VIAGGIO</span></div>
+<div class="row"><span>D24-MI02</span><span>Torino → Milano</span><span>€ 620</span><span class="pill">CONFERMATA</span></div>
+<div class="row"><span>D24-GE03</span><span>Torino → Genova</span><span>€ 510</span><span class="pill">DISPONIBILE</span></div>
+</div></div>
+<div class="panel section"><h2>Flotta</h2><div class="table">
+<div class="row"><b>Mezzo</b><b>Modello</b><b>Portata</b><b>Stato</b></div>
+<div class="row"><span>DX24A01</span><span>Opel Movano 2.3</span><span>1.300 kg</span><span class="pill">DISPONIBILE</span></div>
+<div class="row"><span>DX24A02</span><span>Opel Movano 2.3</span><span>1.300 kg</span><span class="pill">IN VIAGGIO</span></div>
+<div class="row"><span>DX24A03</span><span>Opel Movano 2.3</span><span>1.300 kg</span><span class="pill">DISPONIBILE</span></div>
+</div></div>
+</section>
+
+<div class="footer">DIRECT24 V4 DEMO — simulazione locale. I prezzi sono indicativi e non rappresentano un preventivo contrattuale.</div>
+</div>
+<script>
+function show(id){document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');scrollTo({top:0,behavior:'smooth'})}
+function quote(){
+ let km=+document.getElementById('km').value||0,tolls=+document.getElementById('tolls').value||0,wait=+document.getElementById('wait').value||0;
+ let urgent=document.getElementById('urgent').checked,night=document.getElementById('night').checked,holiday=document.getElementById('holiday').checked;
+ let base=km<=100?220:km<=250?350:km<=500?600:km<=750?850:km<=1000?1100:km<=1250?1350:km<=1500?1550:km*1.08;
+ let price=base;if(urgent)price*=1.2;if(night)price*=1.2;if(holiday)price*=1.25;if(wait>1)price+=(wait-1)*35;
+ price=Math.round(price+tolls);
+ let box=document.getElementById('quote');box.classList.remove('hidden');box.innerHTML='<div class="muted">STIMA DIRECT24</div><div class="big">€ '+price.toLocaleString('it-IT')+' + IVA</div><div class="muted">'+km+' km missione • '+(urgent?'urgente • ':'')+(night?'notturno • ':'')+(holiday?'festivo • ':'')+'pedaggi inclusi</div>';
+}
+function book(){
+ let code='D24-'+Math.random().toString(36).substring(2,7).toUpperCase();
+ quote();document.getElementById('quote').innerHTML+='<div style="margin-top:15px"><span class="pill">RICHIESTA RICEVUTA</span><p><b>Codice missione: '+code+'</b></p><p class="muted">In una versione online reale questo codice aprirà il tracking della missione.</p></div>';
+}
+function track(){document.getElementById('trackResult').scrollIntoView({behavior:'smooth'})}
+</script>
+</body>
+</html>
